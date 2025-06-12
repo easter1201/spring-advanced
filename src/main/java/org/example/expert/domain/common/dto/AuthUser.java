@@ -1,7 +1,7 @@
 package org.example.expert.domain.common.dto;
 
 import lombok.Getter;
-import org.example.expert.domain.user.enums.UserRole;
+import org.example.expert.domain.user.service.enums.UserRole;
 
 @Getter
 public class AuthUser {

@@ -1,4 +1,4 @@
-package org.example.expert.domain.user.enums;
+package org.example.expert.domain.user.service.enums;
 
 import org.example.expert.domain.common.exception.InvalidRequestException;
 

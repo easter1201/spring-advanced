@@ -22,7 +22,7 @@ public class WeatherClient {
         this.restTemplate = builder.build();
     }
 
-    public String getTodayWeather() {
+    public String getTodayWeather() { //불필요한 if-else 구문 삭제, if문 분리를 통해 코드 가독성 상승
         ResponseEntity<WeatherDto[]> responseEntity =
                 restTemplate.getForEntity(buildWeatherApiUri(), WeatherDto[].class);
 

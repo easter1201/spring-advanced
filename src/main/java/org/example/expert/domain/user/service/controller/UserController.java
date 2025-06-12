@@ -1,12 +1,12 @@
-package org.example.expert.domain.user.controller;
+package org.example.expert.domain.user.service.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.expert.domain.common.annotation.Auth;
 import org.example.expert.domain.common.dto.AuthUser;
-import org.example.expert.domain.user.dto.request.UserChangePasswordRequest;
-import org.example.expert.domain.user.dto.response.UserResponse;
-import org.example.expert.domain.user.service.UserService;
+import org.example.expert.domain.user.service.dto.request.UserChangePasswordRequest;
+import org.example.expert.domain.user.service.dto.response.UserResponse;
+import org.example.expert.domain.user.service.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +21,7 @@ public class UserController {
         return ResponseEntity.ok(userService.getUser(userId));
     }
 
-    @PutMapping("/users")
+    @PutMapping("/users") //Validation 위해 @Valid 추가
     public void changePassword(@Auth AuthUser authUser, @Valid @RequestBody UserChangePasswordRequest userChangePasswordRequest) {
         userService.changePassword(authUser.getId(), userChangePasswordRequest);
     }

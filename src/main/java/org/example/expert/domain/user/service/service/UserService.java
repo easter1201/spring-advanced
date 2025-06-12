@@ -1,12 +1,12 @@
-package org.example.expert.domain.user.service;
+package org.example.expert.domain.user.service.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.expert.config.PasswordEncoder;
 import org.example.expert.domain.common.exception.InvalidRequestException;
-import org.example.expert.domain.user.dto.request.UserChangePasswordRequest;
-import org.example.expert.domain.user.dto.response.UserResponse;
-import org.example.expert.domain.user.entity.User;
-import org.example.expert.domain.user.repository.UserRepository;
+import org.example.expert.domain.user.service.dto.request.UserChangePasswordRequest;
+import org.example.expert.domain.user.service.dto.response.UserResponse;
+import org.example.expert.domain.user.service.entity.User;
+import org.example.expert.domain.user.service.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +23,7 @@ public class UserService {
         return new UserResponse(user.getId(), user.getEmail());
     }
 
-    @Transactional
+    @Transactional //기존 비밀번호 형식, 길이 검증 구문 삭제
     public void changePassword(long userId, UserChangePasswordRequest userChangePasswordRequest) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new InvalidRequestException("User not found"));

@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import org.example.expert.domain.comment.entity.Comment;
 import org.example.expert.domain.common.entity.Timestamped;
 import org.example.expert.domain.manager.entity.Manager;
-import org.example.expert.domain.user.entity.User;
+import org.example.expert.domain.user.service.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;

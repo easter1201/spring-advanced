@@ -9,8 +9,8 @@ import org.example.expert.domain.todo.dto.response.TodoResponse;
 import org.example.expert.domain.todo.dto.response.TodoSaveResponse;
 import org.example.expert.domain.todo.entity.Todo;
 import org.example.expert.domain.todo.repository.TodoRepository;
-import org.example.expert.domain.user.dto.response.UserResponse;
-import org.example.expert.domain.user.entity.User;
+import org.example.expert.domain.user.service.dto.response.UserResponse;
+import org.example.expert.domain.user.service.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -56,14 +56,14 @@ public class TodoService {
         return todos.map(this::buildResponse);
     }
 
-    public TodoResponse getTodo(long todoId) {
+    public TodoResponse getTodo(long todoId) { //return부 메소드화로 인해 User 선언 삭제
         Todo todo = todoRepository.findById(todoId)
                 .orElseThrow(() -> new InvalidRequestException("Todo not found"));
 
         return buildResponse(todo);
     }
 
-    private TodoResponse buildResponse(Todo todo){
+    private TodoResponse buildResponse(Todo todo){ //getTodos()와 getTodo()의 return부 메소드화
         return new TodoResponse(
                 todo.getId(),
                 todo.getTitle(),
